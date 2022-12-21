@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Heading>Tiendita de Mage</Heading>
+        <Heading textAlign="center">Tiendita de Mage</Heading>
       </main>
     </>
   );
