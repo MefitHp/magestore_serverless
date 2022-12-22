@@ -1,7 +1,14 @@
-import { Heading } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import Head from "next/head";
+import CandyCard from "../components/CandyCard";
+import { candies } from "../mockData";
+import { Candy } from "../types";
 
-export default function Home() {
+interface HomeProps {
+  candies: Candy[];
+}
+
+export default function Home(props: HomeProps) {
   return (
     <>
       <Head>
@@ -15,7 +22,20 @@ export default function Home() {
       </Head>
       <main>
         <Heading textAlign="center">Tiendita de Mage</Heading>
+        <Flex flexDir="column" gap={4}>
+          {props.candies.map((candy) => (
+            <CandyCard key={candy.id} {...candy} />
+          ))}
+        </Flex>
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      candies,
+    },
+  };
 }
